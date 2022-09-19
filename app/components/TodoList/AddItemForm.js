@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, StyleSheet, TextInput} from 'react-native';
+import {View, StyleSheet, TextInput, ToastAndroid} from 'react-native';
 import MyButton from '../MyButton';
 
 const AddItemForm = ({handleSubmit, handleClose}) => {
@@ -23,6 +23,7 @@ const AddItemForm = ({handleSubmit, handleClose}) => {
         title="Add To List"
         onPress={() => {
           if (text) handleSubmit(text);
+          else ToastAndroid.show('Enter Your Task', ToastAndroid.SHORT);
           setText('');
         }}
       />
@@ -48,6 +49,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     borderRadius: 10,
     paddingHorizontal: 10,
+    fontSize: 20,
   },
   button: {
     borderRadius: 20,
