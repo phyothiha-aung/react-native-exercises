@@ -1,27 +1,28 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {createDrawerNavigator} from '@react-navigation/drawer';
 
 import Home from './Home';
 import Profile from './Profile';
 import About from './About';
 import CreatePostScreen from './CreatePost';
 
-const Stack = createNativeStackNavigator();
+const Drawer = createDrawerNavigator();
 
 const MyNavigation = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
+      <Drawer.Navigator>
+        <Drawer.Screen
           name="Home"
           component={Home}
           options={{title: 'Overview'}}
         />
-        <Stack.Screen name="Profile" component={Profile} />
-        <Stack.Screen name="About" component={About} />
-        <Stack.Screen name="CreatePost" component={CreatePostScreen} />
-      </Stack.Navigator>
+        <Drawer.Screen name="Profile" component={Profile} />
+        <Drawer.Screen name="About" component={About} />
+        <Drawer.Screen name="CreatePost" component={CreatePostScreen} />
+      </Drawer.Navigator>
     </NavigationContainer>
   );
 };

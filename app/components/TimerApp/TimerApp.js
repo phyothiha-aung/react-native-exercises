@@ -4,12 +4,10 @@ import {Pressable, Text, View, StyleSheet, Modal, FlatList} from 'react-native';
 import Header from '../Header';
 import AddTimer from './AddTimer';
 import TimerCard from './TimerCard';
-import EditTimer from './EditTimer';
 
 const TimerApp = () => {
   const [data, setData] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
-  const [editVisible, setEditVisible] = useState(false);
 
   const handleRemove = item => {
     const newData = data.filter(d => {
@@ -27,12 +25,6 @@ const TimerApp = () => {
     setModalVisible(prev => !prev);
   };
 
-  const handleEdit = () => {
-    setEditVisible(true);
-  };
-
-  const handleSubmitEdit = item => {};
-
   return (
     <View style={styles.container}>
       <Header title="Timers" />
@@ -49,27 +41,17 @@ const TimerApp = () => {
         </Pressable>
 
         <FlatList
+          keyboardShouldPersistTaps={'handled'}
           data={data}
           keyExtractor={item => item.id}
           renderItem={({item}) => (
-            <TimerCard
-              title={item.title}
-              subTitle={item.subTitle}
-              time={item.time}
-              handleEdit={handleEdit}
-              handleRemove={() => handleRemove(item)}
-            />
+            <TimerCard item={item} handleRemove={() => handleRemove(item)} />
           )}
         />
       </View>
       <Modal animationType="slide" visible={modalVisible} transparent>
         <View style={styles.centeredView}>
           <AddTimer handleSubmit={handleSubmit} handleClose={handleClose} />
-        </View>
-      </Modal>
-      <Modal animationType="slide" visible={editVisible} transparent>
-        <View style={styles.centeredView}>
-          <EditTimer handleClose={() => setEditVisible(false)} />
         </View>
       </Modal>
     </View>

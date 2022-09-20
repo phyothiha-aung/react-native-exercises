@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {View, StyleSheet, TextInput, ToastAndroid, Text} from 'react-native';
 import MyButton from '../MyButton';
 
-const EditTimer = ({handleSubmitEdit, handleClose}) => {
+const EditTimer = ({update, handleClose}) => {
   const [title, setTitle] = useState();
   const [subTitle, setSubTitle] = useState();
   const [hour, setHour] = useState();
@@ -10,9 +10,10 @@ const EditTimer = ({handleSubmitEdit, handleClose}) => {
   const [secs, setSecs] = useState();
 
   const getTime = (hr = 0, mins = 0, secs = 0) => {
-    const timeInSecs = hr * 3600 + mins * 60 + secs;
+    const timeInSecs = hr * 3600 + mins * 60 + secs * 1;
     return timeInSecs;
   };
+
   return (
     <View style={styles.container}>
       <MyButton
@@ -69,8 +70,7 @@ const EditTimer = ({handleSubmitEdit, handleClose}) => {
         title="Add Timer List"
         onPress={() => {
           const timeInSecs = getTime(hour, mins, secs);
-
-          if (title && subTitle) console.log('here');
+          if (title && subTitle) update(title, subTitle, timeInSecs);
           else ToastAndroid.show('Enter Details', ToastAndroid.SHORT);
           setTitle('');
           setSubTitle('');

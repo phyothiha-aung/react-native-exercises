@@ -1,28 +1,23 @@
 import React, {useEffect, useState} from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import {View, StyleSheet, Text, Modal, Button} from 'react-native';
+
+import GetTime from './GetTime';
 import MyButton from '../MyButton';
+import EditTimer from './EditTimer';
 
-const GetTime = ({time}) => {
-  const hr = Math.floor(time / 3600);
-  const mins = Math.floor((time % 3600) / 60);
-  const secs = (time % 3600) % 60;
-  return (
-    <Text style={styles.time}>
-      {hr}:{`0${mins}`.slice(-2)}:{`0${secs}`.slice(-2)}
-    </Text>
-  );
-};
-
-const TimerCard = ({
-  title,
-  time,
-  subTitle,
-  handleRemove,
-  handleEdit,
-  style,
-}) => {
+const TimerCard = ({item, handleRemove, style}) => {
   const [isActive, setIsActive] = useState(false);
-  const [reaminingTime, setRemainingTime] = useState(time);
+  const [reaminingTime, setRemainingTime] = useState(item.time);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [title, setTitle] = useState(item.title);
+  const [subTitle, setSubTitle] = useState(item.subTitle);
+
+  const update = (title, subTitle, time) => {
+    setTitle(title);
+    setSubTitle(subTitle);
+    setRemainingTime(time);
+    setModalVisible(false);
+  };
 
   useEffect(() => {
     let interval = null;
@@ -43,7 +38,7 @@ const TimerCard = ({
           buttonStyle={styles.editBtn}
           textStyle={styles.editText}
           title="Edit"
-          onPress={handleEdit}
+          onPress={() => setModalVisible(true)}
         />
         <MyButton
           buttonStyle={styles.removeBtn}
@@ -62,6 +57,14 @@ const TimerCard = ({
         title={isActive ? 'Stop' : 'Start'}
         onPress={() => setIsActive(prev => !prev)}
       />
+      <Modal animationType="slide" visible={modalVisible} transparent>
+        <View style={styles.centeredView}>
+          <EditTimer
+            handleClose={() => setModalVisible(false)}
+            update={update}
+          />
+        </View>
+      </Modal>
     </View>
   );
 };
@@ -85,12 +88,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     marginBottom: 15,
   },
-  time: {
-    textAlign: 'center',
-    fontSize: 30,
-    fontWeight: 'bold',
-    marginBottom: 15,
-  },
+
   buttonBox: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -127,6 +125,13 @@ const styles = StyleSheet.create({
   },
   actionText: {
     color: 'green',
+  },
+  centeredView: {
+    flex: 1,
+    padding: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 20,
   },
 });
 

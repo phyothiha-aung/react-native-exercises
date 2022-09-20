@@ -10,7 +10,7 @@ const AddTimer = ({handleSubmit, handleClose}) => {
   const [secs, setSecs] = useState();
 
   const getTime = (hr = 0, mins = 0, secs = 0) => {
-    const timeInSecs = hr * 3600 + mins * 60 + secs;
+    const timeInSecs = hr * 3600 + mins * 60 + secs * 1;
     return timeInSecs;
   };
   return (
@@ -69,7 +69,6 @@ const AddTimer = ({handleSubmit, handleClose}) => {
         title="Add Timer List"
         onPress={() => {
           const timeInSecs = getTime(hour, mins, secs);
-
           if (title && subTitle) handleSubmit(title, subTitle, timeInSecs);
           else ToastAndroid.show('Enter Details', ToastAndroid.SHORT);
           setTitle('');
