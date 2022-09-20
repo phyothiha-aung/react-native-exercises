@@ -1,5 +1,5 @@
 import React from 'react';
-import {SafeAreaView, StyleSheet} from 'react-native';
+import {SafeAreaView, StyleSheet, Text} from 'react-native';
 import {Provider} from 'react-redux';
 
 import BoxColor from './app/components/BoxColor/BoxColor';
@@ -13,6 +13,8 @@ import MyNavigation from './app/components/NavigationExercise';
 
 import configureStore from './app/components/redux/store';
 import TodoList from './app/components/TodoList/TodoList';
+import TimerApp from './app/components/TimerApp/TimerApp';
+import TimerCard from './app/components/TimerApp/TimerCard';
 
 const store = configureStore();
 
@@ -20,20 +22,20 @@ const App = () => {
   return (
     <Provider store={store}>
       <SafeAreaView style={styles.container}>
-        {/* //{' '}
-      
-        //{' '}
+        {/* 
        
-  //     <Counter />
-  //     <Day1 />
-  //     <Day1FlatList />
-  //     <LikeButton />
-  //     <BoxColor r={128} g={255} b={0} />
-  //     <Profile />
-  //     <MyNavigation />
-  //     <Game />
+       <Counter />
+       <Day1 />
+       <Day1FlatList />
+       <LikeButton />
+       <BoxColor r={128} g={255} b={0} />
+       <Profile />
+       <MyNavigation />
+       <Game />
+        <TodoList />*
+        <TimerCard title="Go to Gym" subTitle="Fitness" />
         */}
-        <TodoList />
+        <TimerApp />
       </SafeAreaView>
     </Provider>
   );
