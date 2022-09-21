@@ -12,7 +12,7 @@ import Loading from './Loading';
 import NewsCard from './NewsCard';
 
 const URL =
-  'https://newsapi.org/v2/top-headlines?country=us&apiKey=27820167d6b1430a990adbe821873a09';
+  'https://newsapi.org/v2/top-headlines?country=us&pageSize=5&apiKey=27820167d6b1430a990adbe821873a09';
 
 const Home = ({navigation}) => {
   const [news, setNews] = useState([]);
