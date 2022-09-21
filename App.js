@@ -10,14 +10,12 @@ import configureStore from './app/components/redux/store';
 // import Day1FlatList from './app/components/Day1/Day1FlatList';
 // import LikeButton from './app/components/LikeButton/LikeButton';
 // import Profile from './app/components/Profile/Profile';
-// import Game from './app/components/Game/Game';
-// import MyNavigation from './app/components/NavigationExercise';
-
+import Game from './app/components/Game/Game';
 // import TodoList from './app/components/TodoList/TodoList';
-//
 // import TimerCard from './app/components/TimerApp/TimerCard';
+//import TimerApp from './app/components/TimerApp/TimerApp';
+//import MyNavigation from './app/components/NavigationExercise';
 
-import TimerApp from './app/components/TimerApp/TimerApp';
 const store = configureStore();
 
 const App = () => {
@@ -32,14 +30,14 @@ const App = () => {
        <LikeButton />
        <BoxColor r={128} g={255} b={0} />
        <Profile />
+       <TimerApp />
        
-       <Game />
-       <MyNavigation />
+      <MyNavigation />
         <TodoList />*
         <TimerCard title="Go to Gym" subTitle="Fitness" />
         */}
 
-        <TimerApp />
+        <Game />
       </SafeAreaView>
     </Provider>
   );

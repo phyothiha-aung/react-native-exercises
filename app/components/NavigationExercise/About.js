@@ -11,6 +11,7 @@ const About = ({navigation}) => {
         title="go profile"
         onPress={() => navigation.navigate('Profile')}
       />
+      <Button title="go pop" onPress={() => navigation.pop()} />
     </View>
   );
 };
