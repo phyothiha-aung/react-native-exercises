@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
   },
   target: {
     fontSize: 45,
+    borderRadius: 10,
     backgroundColor: '#aaa',
     marginHorizontal: 50,
     textAlign: 'center',
@@ -93,7 +94,7 @@ const styles = StyleSheet.create({
   },
   time: {
     textAlign: 'center',
-    fontSize: 40,
+    fontSize: 50,
   },
   status: {
     fontSize: 20,

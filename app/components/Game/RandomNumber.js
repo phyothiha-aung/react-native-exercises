@@ -33,6 +33,8 @@ const styles = StyleSheet.create({
     marginHorizontal: 15,
     marginVertical: 25,
     textAlign: 'center',
+    borderRadius: 20,
+    paddingVertical: 10,
   },
   selected: {
     opacity: 0.3,
