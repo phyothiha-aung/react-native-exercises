@@ -11,7 +11,8 @@ import configureStore from './app/components/redux/store';
 // import LikeButton from './app/components/LikeButton/LikeButton';
 // import Profile from './app/components/Profile/Profile';
 //import Game from './app/components/Game/Game';
-import NewsReader from './app/components/NewsReader/NewsReader';
+//import NewsReader from './app/components/NewsReader/NewsReader';
+import Profile from './app/components/GithubProfile/Profile';
 // import TodoList from './app/components/TodoList/TodoList';
 // import TimerCard from './app/components/TimerApp/TimerCard';
 //import TimerApp from './app/components/TimerApp/TimerApp';
@@ -34,11 +35,12 @@ const App = () => {
        <TimerApp />
        <Game />
       <MyNavigation />
-        <TodoList />*
+        <TodoList />
+        <NewsReader />
         <TimerCard title="Go to Gym" subTitle="Fitness" />
         */}
 
-        <NewsReader />
+        <Profile />
       </SafeAreaView>
     </Provider>
   );
