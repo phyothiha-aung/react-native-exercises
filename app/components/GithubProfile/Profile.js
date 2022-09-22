@@ -6,6 +6,8 @@ import {
   Image,
   TextInput,
   ActivityIndicator,
+  Keyboard,
+  TouchableWithoutFeedback,
 } from 'react-native';
 
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -15,7 +17,7 @@ const URL = 'https://api.github.com/users/';
 const Profile = () => {
   const [user, setUser] = useState({});
   const [loading, setLoading] = useState(true);
-  const [url, setUrl] = useState(URL + 'mohdafzal21');
+  const [url, setUrl] = useState(URL);
   const [text, setText] = useState('');
 
   const fetchUser = async () => {
@@ -35,44 +37,46 @@ const Profile = () => {
   }, [url]);
 
   return (
-    <View style={styles.container}>
-      {loading && <ActivityIndicator />}
-      <View style={styles.cardView}>
-        <TextInput
-          style={styles.textInput}
-          placeholder="Type Username + Enter"
-          onChangeText={t => setText(t)}
-          onSubmitEditing={() => {
-            setUrl(URL + text);
-          }}
-        />
-        <View style={styles.upperView}>
-          <Image
-            style={styles.avatar}
-            source={{uri: user.avatar_url, width: 110, height: 110}}
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <View style={styles.container}>
+        {loading && <ActivityIndicator />}
+        <View style={styles.cardView}>
+          <TextInput
+            style={styles.textInput}
+            placeholder="Type Username + Enter"
+            onChangeText={t => setText(t)}
+            onSubmitEditing={() => {
+              setUrl(URL + text);
+            }}
           />
-          <Text style={styles.name}>{user.name}</Text>
-          <View style={styles.location}>
-            <Entypo name="location" style={styles.locationText} />
-            <Text style={styles.locationText}> {user.location}</Text>
+          <View style={styles.upperView}>
+            <Image
+              style={styles.avatar}
+              source={{uri: user.avatar_url, width: 110, height: 110}}
+            />
+            <Text style={styles.name}>{user.name}</Text>
+            <View style={styles.location}>
+              <Entypo name="location" style={styles.locationText} />
+              <Text style={styles.locationText}> {user.location}</Text>
+            </View>
           </View>
-        </View>
-        <View style={styles.info}>
-          <View style={styles.detail}>
-            <Text style={styles.number}>{user.followers}</Text>
-            <Text style={styles.text}>Followers</Text>
-          </View>
-          <View style={styles.detail}>
-            <Text style={styles.number}>{user.public_repos}</Text>
-            <Text style={styles.text}>Repository</Text>
-          </View>
-          <View style={styles.detail}>
-            <Text style={styles.number}>{user.following}</Text>
-            <Text style={styles.text}>Following</Text>
+          <View style={styles.info}>
+            <View style={styles.detail}>
+              <Text style={styles.number}>{user.followers}</Text>
+              <Text style={styles.text}>Followers</Text>
+            </View>
+            <View style={styles.detail}>
+              <Text style={styles.number}>{user.public_repos}</Text>
+              <Text style={styles.text}>Repository</Text>
+            </View>
+            <View style={styles.detail}>
+              <Text style={styles.number}>{user.following}</Text>
+              <Text style={styles.text}>Following</Text>
+            </View>
           </View>
         </View>
       </View>
-    </View>
+    </TouchableWithoutFeedback>
   );
 };
 
