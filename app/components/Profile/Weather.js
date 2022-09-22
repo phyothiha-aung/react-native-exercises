@@ -6,6 +6,7 @@ import {
   Text,
   TextInput,
   TouchableWithoutFeedback,
+  Dimensions,
   View,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
@@ -43,14 +44,18 @@ const Weather = () => {
   let img = require('../../assets/clear.jpg');
   if (!loading && status) {
     if (status === 'Clear') img = require('../../assets/clear.jpg');
-    else if (status === 'Haze') img = require('../../assets/haze.jpg');
+    else if (status === 'Haze' || status === 'Mist')
+      img = require('../../assets/haze.jpg');
     else if (status === 'Clouds') img = require('../../assets/clouds.jpg');
     else if (status === 'Rain') img = require('../../assets/rain.jpg');
   }
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <ImageBackground style={styles.container} source={img} resizeMode="cover">
+      <ImageBackground
+        style={styles.backgroundImage}
+        source={img}
+        resizeMode="cover">
         {loading && <ActivityIndicator style={styles.activity} size="large" />}
         <Text style={styles.city}>{city}</Text>
         <Text style={styles.status}>{status}</Text>
@@ -75,8 +80,12 @@ const Weather = () => {
 export default Weather;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+  backgroundImage: {
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
     alignItems: 'center',
   },
   city: {

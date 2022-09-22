@@ -18,7 +18,7 @@ import configureStore from './app/components/redux/store';
 // import TimerCard from './app/components/TimerApp/TimerCard';
 //import TimerApp from './app/components/TimerApp/TimerApp';
 //import MyNavigation from './app/components/NavigationExercise';
-//import Weather from './app/components/Profile/Weather';
+import Weather from './app/components/Profile/Weather';
 
 const store = configureStore();
 
@@ -39,10 +39,10 @@ const App = () => {
       <MyNavigation />
         <TodoList />
         <NewsReader />
-        <TimerCard title="Go to Gym" subTitle="Fitness" />
-        <Weather />
-        */}
         <ImagePicker />
+        <TimerCard title="Go to Gym" subTitle="Fitness" />
+        */}
+        <Weather />
       </SafeAreaView>
     </Provider>
   );
