@@ -1,7 +1,6 @@
 import React from 'react';
 import {SafeAreaView, StyleSheet, Text} from 'react-native';
 import {Provider} from 'react-redux';
-import ImagePicker from './app/components/ImagePicker/ImagePicker';
 
 import configureStore from './app/components/redux/store';
 
@@ -18,7 +17,8 @@ import configureStore from './app/components/redux/store';
 // import TimerCard from './app/components/TimerApp/TimerCard';
 //import TimerApp from './app/components/TimerApp/TimerApp';
 //import MyNavigation from './app/components/NavigationExercise';
-import Weather from './app/components/Profile/Weather';
+//import Weather from './app/components/Profile/Weather';
+import ImagePickerApp from './app/components/ImagePicker/ImagePickerApp';
 
 const store = configureStore();
 
@@ -39,10 +39,11 @@ const App = () => {
       <MyNavigation />
         <TodoList />
         <NewsReader />
-        <ImagePicker />
+        <Weather />
+        
         <TimerCard title="Go to Gym" subTitle="Fitness" />
         */}
-        <Weather />
+        <ImagePickerApp />
       </SafeAreaView>
     </Provider>
   );
