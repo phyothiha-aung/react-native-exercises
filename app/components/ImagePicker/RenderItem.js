@@ -1,16 +1,16 @@
 import {StyleSheet, Text, Image} from 'react-native';
 import React from 'react';
 
-const RenderItem = ({uri}) => {
-  return uri.includes('file:///data/user/0/com.tasks/cache/') ? (
+const RenderItem = ({item}) => {
+  return item.uri ? (
     <Image
       style={styles.image}
-      source={{uri: uri}}
+      source={{uri: item.uri}}
       resizeMethod="resize"
       resizeMode="cover"
     />
   ) : (
-    <Text style={styles.text}>{uri}</Text>
+    <Text style={styles.text}>{item.text}</Text>
   );
 };
 

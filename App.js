@@ -17,8 +17,9 @@ import configureStore from './app/components/redux/store';
 // import TimerCard from './app/components/TimerApp/TimerCard';
 //import TimerApp from './app/components/TimerApp/TimerApp';
 //import MyNavigation from './app/components/NavigationExercise';
-//import Weather from './app/components/Profile/Weather';
+//import Weather from './app/components/Weather/Weather';
 import ImagePickerApp from './app/components/ImagePicker/ImagePickerApp';
+import SwipeableExercise from './app/components/Swipeable/SwipeableExercise';
 
 const store = configureStore();
 
@@ -26,23 +27,23 @@ const App = () => {
   return (
     <Provider store={store}>
       <SafeAreaView style={styles.container}>
-        {/* 
-       
-       <Counter />
-       <Day1 />
-       <Day1FlatList />
-       <LikeButton />
-       <BoxColor r={128} g={255} b={0} />
-       <Profile />
-       <TimerApp />
-       <Game />
+        {/*  
+      <Counter />
+      <Day1 />
+      <Day1FlatList />
+      <LikeButton />
+      <BoxColor r={128} g={255} b={0} />
+      <Profile />
+      <TimerApp />
+      <Game />
       <MyNavigation />
-        <TodoList />
-        <NewsReader />
-        <Weather />
-        
-        <TimerCard title="Go to Gym" subTitle="Fitness" />
-        */}
+      <TodoList />
+      <NewsReader />
+      <Weather />
+      <SwipeableExercise />
+      <TimerCard title="Go to Gym" subTitle="Fitness" />
+      */}
+
         <ImagePickerApp />
       </SafeAreaView>
     </Provider>

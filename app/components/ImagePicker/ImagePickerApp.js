@@ -6,6 +6,7 @@ import {
   Keyboard,
   FlatList,
   TextInput,
+  StatusBar,
 } from 'react-native';
 import React, {useEffect, useRef, useState} from 'react';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
@@ -24,6 +25,7 @@ const ImagePickerApp = () => {
   const [imageUri, setImageUri] = useState([]);
   const [text, setText] = useState('');
   const flatListRef = useRef();
+  const inputRef = useRef();
 
   useEffect(() => {
     getPermission();
@@ -88,7 +90,8 @@ const ImagePickerApp = () => {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container}>
-        <View style={styles.listContainer}>
+        <StatusBar backgroundColor="#fff" barStyle="dark-content" />
+        <View style={[styles.listContainer]}>
           <FlatList
             ref={flatListRef}
             removeClippedSubviews
@@ -96,7 +99,7 @@ const ImagePickerApp = () => {
             contentContainerStyle={{flexDirection: 'column-reverse'}}
             data={imageUri}
             keyExtractor={item => item.id}
-            renderItem={({item}) => <RenderItem uri={item.uri} />}
+            renderItem={({item}) => <RenderItem item={item} />}
           />
         </View>
         <View style={styles.inputContainer}>
@@ -116,7 +119,7 @@ const ImagePickerApp = () => {
               if (text)
                 setImageUri([
                   ...imageUri,
-                  {uri: text, id: Math.random().toString()},
+                  {text: text, id: Math.random().toString()},
                 ]);
               setText('');
               flatListRef.current.scrollToEnd({animating: true});
@@ -136,7 +139,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   listContainer: {
-    height: 610,
+    marginTop: 72,
   },
   inputContainer: {
     justifyContent: 'space-around',
